@@ -4,14 +4,13 @@
     "package": "me.imbanana.projectilecamera.mixin",
     "compatibilityLevel": "JAVA_21",
     "mixins": [
-
     ],
     "client": [
+        "AbstractArrowMixin",
         "CameraMixin",
         "EntityRendererMixin",
         "KeyboardHandlerMixin",
-        "ProjectileMixin",
-        "AbstractArrowMixin"
+        "ProjectileMixin"
     ],
     "injectors": {
         "defaultRequire": 1
