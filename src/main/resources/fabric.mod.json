@@ -1,0 +1,25 @@
+{
+    "schemaVersion": 1,
+    "id": "projectile_camera",
+    "version": "${version}",
+    "name": "ProjectileCamera",
+    "description": "Add camera to projectiles",
+    "authors": [],
+    "contact": {},
+    "license": "MIT",
+    "icon": "assets/projectile_camera/icon.png",
+    "environment": "client",
+    "entrypoints": {
+        "client": [
+            "me.imbanana.projectilecamera.ProjectileCameraMod"
+        ]
+    },
+    "mixins": [
+        "projectile_camera.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=${loader_version}",
+        "fabric-api": "*",
+        "minecraft": "${minecraft_version}"
+    }
+}
