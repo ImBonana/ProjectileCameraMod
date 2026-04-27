@@ -1,0 +1,22 @@
+{
+  "stats": {
+    "minecraft:used": {
+      "minecraft:trident": 11,
+      "minecraft:snowball": 1,
+      "minecraft:firework_rocket": 1
+    },
+    "minecraft:custom": {
+      "minecraft:sprint_one_cm": 1182,
+      "minecraft:time_since_rest": 1085,
+      "minecraft:walk_one_cm": 1851,
+      "minecraft:total_world_time": 1098,
+      "minecraft:leave_game": 1,
+      "minecraft:fly_one_cm": 136,
+      "minecraft:walk_on_water_one_cm": 990,
+      "minecraft:play_time": 1085,
+      "minecraft:jump": 7,
+      "minecraft:time_since_death": 1085
+    }
+  },
+  "DataVersion": 4671
+}

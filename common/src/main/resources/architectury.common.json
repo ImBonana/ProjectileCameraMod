@@ -2,5 +2,5 @@
     "injected_interfaces": {
 
     },
-    "accessWidener": "modtemplate.accesswidener"
+    "accessWidener": "projectile_camera.accesswidener"
 }

@@ -1,0 +1,19 @@
+{
+  "stats": {
+    "minecraft:custom": {
+      "minecraft:time_since_rest": 208,
+      "minecraft:total_world_time": 257,
+      "minecraft:leave_game": 1,
+      "minecraft:mob_kills": 1,
+      "minecraft:play_time": 208,
+      "minecraft:time_since_death": 208
+    },
+    "minecraft:killed": {
+      "minecraft:sheep": 1
+    },
+    "minecraft:used": {
+      "minecraft:trident": 2
+    }
+  },
+  "DataVersion": 4671
+}

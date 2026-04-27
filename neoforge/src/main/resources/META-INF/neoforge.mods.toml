@@ -6,10 +6,10 @@ license = "MIT"
 [[mods]]
 modId = "${mod_id}"
 version = "${version}"
-displayName = "ModTemplate"
+displayName = "ProjetileCamera"
 authors = "ImBanana"
 description = '''
-Mod Template
+Add camera to projectiles
 '''
 logoFile = "assets/${mod_id}/icon.png"
 modUrl = "https://modrinth.com/project/${modrinth_id}"

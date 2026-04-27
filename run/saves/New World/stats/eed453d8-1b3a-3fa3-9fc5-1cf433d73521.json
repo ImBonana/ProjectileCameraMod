@@ -1,0 +1,18 @@
+{
+  "stats": {
+    "minecraft:used": {
+      "minecraft:trident": 1,
+      "minecraft:snowball": 3,
+      "minecraft:bow": 2
+    },
+    "minecraft:custom": {
+      "minecraft:time_since_rest": 582,
+      "minecraft:total_world_time": 589,
+      "minecraft:leave_game": 1,
+      "minecraft:fly_one_cm": 520,
+      "minecraft:play_time": 582,
+      "minecraft:time_since_death": 582
+    }
+  },
+  "DataVersion": 4671
+}

@@ -2,8 +2,8 @@
     "schemaVersion": 1,
     "id": "${mod_id}",
     "version": "${version}",
-    "name": "ModTemplate",
-    "description": "Mod Template",
+    "name": "ProjectileCamera",
+    "description": "Add camera to projectiles",
     "authors": [
         "ImBanana"
     ],
@@ -14,11 +14,8 @@
     "icon": "assets/${mod_id}/icon.png",
     "environment": "*",
     "entrypoints": {
-        "main": [
-            "me.imbanana.modtemplate.fabric.ModtemplateFabric"
-        ],
         "client": [
-            "me.imbanana.modtemplate.fabric.client.ModtemplateFabricClient"
+            "me.imbanana.projectilecamera.fabric.ProjectileCameraModFabricClient"
         ]
     },
     "mixins": [
