@@ -1,12 +1,17 @@
 {
     "required": true,
-    "package": "me.imbanana.projectile_camera.mixin",
+    "package": "me.imbanana.projectilecamera.mixin",
     "compatibilityLevel": "JAVA_25",
     "minVersion": "0.8",
     "mixinextras": {
         "minVersion": "0.5.0"
     },
     "client": [
+        "AbstractArrowMixin",
+        "CameraMixin",
+        "EntityRendererMixin",
+        "KeyboardHandlerMixin",
+        "ProjectileMixin"
     ],
     "mixins": [
     ],

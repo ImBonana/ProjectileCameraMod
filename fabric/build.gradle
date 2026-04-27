@@ -10,10 +10,20 @@ configurations {
     developmentFabric.extendsFrom common
 }
 
+repositories {
+    maven {
+        name = "Terraformers"
+        url = "https://maven.terraformersmc.com/"
+    }
+}
+
 dependencies {
     implementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
 
     implementation "net.fabricmc.fabric-api:fabric-api:$rootProject.fabric_api_version"
+
+    implementation "com.terraformersmc:modmenu:${rootProject.modmenu_version}"
+    implementation "dev.isxander:yet-another-config-lib:${project.yacl_version}-fabric"
 
     common(project(path: ':common')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
@@ -33,6 +43,7 @@ processResources {
     inputs.property 'modrinth_id', project.modrinth_id
     inputs.property 'mc_version_range', project.fabric_game_version_range
     inputs.property 'loader_version_range', project.fabric_loader_version_range
+    inputs.property 'yacl_version', project.yacl_version
 
     filesMatching('fabric.mod.json') {
         expand (
@@ -40,7 +51,8 @@ processResources {
                 mod_id: project.mod_id,
                 modrinth_id: project.modrinth_id,
                 mc_version_range: project.fabric_game_version_range,
-                loader_version_range: project.fabric_loader_version_range
+                loader_version_range: project.fabric_loader_version_range,
+                yacl_version: project.yacl_version
         )
     }
 

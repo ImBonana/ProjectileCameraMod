@@ -19,14 +19,21 @@ modId = "neoforge"
 type = "required"
 versionRange = "${loader_version_range}"
 ordering = "NONE"
-side = "BOTH"
+side = "CLIENT"
 
 [[dependencies.${mod_id}]]
 modId = "minecraft"
 type = "required"
 versionRange = "${mc_version_range}"
 ordering = "NONE"
-side = "BOTH"
+side = "CLIENT"
+
+[[dependencies.${mod_id}]]
+modId = "yet_another_config_lib_v3"
+mandatory = true
+versionRange = "[${yacl_version},)"
+ordering = "NONE"
+side = "CLIENT"
 
 [[mixins]]
 config = "${mod_id}.mixins.json"

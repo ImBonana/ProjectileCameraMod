@@ -1,0 +1,21 @@
+{
+    "config.projectile_camera.title": "Projectile Camera",
+    "config.projectile_camera.stop_on_move": "Stop On Movement",
+    "config.projectile_camera.stop_on_move.desc": "Should the player exit the projectile camera when moved?",
+    "config.projectile_camera.stop_on_key": "Stop On Keypress",
+    "config.projectile_camera.stop_on_key.desc": "Should the player exit the projectile camera when key is pressed?",
+    "config.projectile_camera.tracked_projectiles": "Tracked Projectiles",
+    "config.projectile_camera.tracked_projectiles.desc": "What projectiles should the mod track?",
+
+    "config.projectile_camera.camera_smooth": "Projectile Camera Smoothing",
+    "config.projectile_camera.camera_smooth.rotation": "Rotation",
+    "config.projectile_camera.camera_smooth.rotation.stiffness": "Stiffness",
+    "config.projectile_camera.camera_smooth.rotation.stiffness.desc": "Lower value = longer delay",
+    "config.projectile_camera.camera_smooth.rotation.damping": "Damping",
+    "config.projectile_camera.camera_smooth.rotation.damping.desc": "Higher value = more rigid",
+    "config.projectile_camera.camera_smooth.movement": "Movement",
+    "config.projectile_camera.camera_smooth.movement.stiffness": "Stiffness",
+    "config.projectile_camera.camera_smooth.movement.stiffness.desc": "Lower value = longer delay",
+    "config.projectile_camera.camera_smooth.movement.damping": "Damping",
+    "config.projectile_camera.camera_smooth.movement.damping.desc": "Higher value = more rigid"
+}
