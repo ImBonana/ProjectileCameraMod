@@ -42,8 +42,10 @@ public class ModCameraController {
             stopTracking();
             return;
         }
+
+        ModConfig config = ModConfig.HANDLER.instance();
         
-        if (this.anchorPos != null && this.client.player != null && this.anchorPos.distanceToSqr(client.player.position()) > 1.0E-6 && ModConfig.SHOULD_STOP_WHEN_MOVED) {
+        if (this.anchorPos != null && this.client.player != null && this.anchorPos.distanceToSqr(client.player.position()) > 1.0E-6 && config.isShouldStopWhenMoved()) {
             stopTracking();
             return;
         }
@@ -56,7 +58,7 @@ public class ModCameraController {
                 || this.client.options.keyJump.isDown()
                 || this.client.options.keyShift.isDown()
                 || this.client.options.keyDrop.isDown()
-        ) && ModConfig.SHOULD_STOP_WHEN_KEYPRESS) {
+        ) && config.isShouldStopWhenKeypress()) {
             stopTracking();
             return;
         }
@@ -68,10 +70,12 @@ public class ModCameraController {
     }
     
     public boolean canTrack(Projectile projectile) {
+        if (!ModConfig.HANDLER.instance().isEnabled()) return false;
+
         if (!projectile.isAlive()) return false;
         if (projectile.getOwner() != null && this.client.player != null && projectile.getOwner().getId() != this.client.player.getId()) return false;
 
-        if (ModConfig.TRACKABLE.stream().noneMatch(entityType -> entityType == projectile.getType())) return false;
+        if (ModConfig.HANDLER.instance().getTrackableEntities().stream().noneMatch(entityType -> entityType == projectile.getType())) return false;
 
         return true;
     }

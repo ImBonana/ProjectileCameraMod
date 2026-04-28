@@ -1,0 +1,5 @@
+{
+    "key.projectile_camera.toggle_mod": "Toggle Projectile Camera",
+    "msg.projectile_camera.toggle_on": "Projectile Camera Is Now On",
+    "msg.projectile_camera.toggle_off": "Projectile Camera Is Now Off"
+}
