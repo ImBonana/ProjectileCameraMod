@@ -2,7 +2,7 @@
     "schemaVersion": 1,
     "id": "${mod_id}",
     "version": "${version}",
-    "name": "ProjectileCamera",
+    "name": "Projectile Camera",
     "description": "Add camera to projectiles",
     "authors": [
         "ImBanana"

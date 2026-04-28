@@ -22,8 +22,7 @@ public abstract class EntityRendererMixin<T extends Entity, S extends EntityRend
     private void hideTrackedProjectile(T entity, Frustum culler, double camX, double camY, double camZ, CallbackInfoReturnable<Boolean> cir) {
         if (!(entity instanceof Projectile projectile)) return;
         if (!ProjectileCameraMod.getCameraController().isTrackingProjectile(projectile)) return;
-        if (!Minecraft.getInstance().options.getCameraType().isFirstPerson()) return;
 
-        cir.setReturnValue(true);
+        cir.setReturnValue(!Minecraft.getInstance().options.getCameraType().isFirstPerson());
     }
 }

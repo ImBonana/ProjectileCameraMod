@@ -10,7 +10,6 @@ import org.lwjgl.glfw.GLFW;
 
 public class ModCameraController {
     private Minecraft client;
-    private ModConfig config;
 
     private Projectile trackedProjectile;
     private Vec3 anchorPos;
@@ -21,7 +20,6 @@ public class ModCameraController {
 
     public ModCameraController() {
         this.client = Minecraft.getInstance();
-        this.config = ProjectileCameraMod.getConfig();
     }
 
     public void startTracking(Projectile projectile) {
@@ -49,7 +47,9 @@ public class ModCameraController {
             return;
         }
 
-        if (this.anchorPos != null && this.client.player != null && this.anchorPos.distanceToSqr(client.player.position()) > 1.0E-6 && this.config.isShouldStopWhenMoved()) {
+        ModConfig config = ModConfig.HANDLER.instance();
+
+        if (this.anchorPos != null && this.client.player != null && this.anchorPos.distanceToSqr(client.player.position()) > 1.0E-6 && config.isShouldStopWhenMoved()) {
             stopTracking();
             return;
         }
@@ -62,7 +62,7 @@ public class ModCameraController {
                         || this.client.options.keyJump.isDown()
                         || this.client.options.keyShift.isDown()
                         || this.client.options.keyDrop.isDown()
-        ) && this.config.isShouldStopWhenKeypress()) {
+        ) && config.isShouldStopWhenKeypress()) {
             stopTracking();
             return;
         }
@@ -74,10 +74,13 @@ public class ModCameraController {
     }
 
     public boolean canTrack(Projectile projectile) {
+        ModConfig config = ModConfig.HANDLER.instance();
+
+        if (!config.isEnabled()) return false;
         if (!projectile.isAlive()) return false;
         if (projectile.getOwner() != null && this.client.player != null && projectile.getOwner().getId() != this.client.player.getId()) return false;
 
-        if (this.config.getTrackableEntities().stream().noneMatch(entityType -> entityType == projectile.getType())) return false;
+        if (config.getTrackableEntities().stream().noneMatch(entityType -> entityType == projectile.getType())) return false;
 
         return true;
     }

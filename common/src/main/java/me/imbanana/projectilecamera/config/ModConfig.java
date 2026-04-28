@@ -1,13 +1,38 @@
 package me.imbanana.projectilecamera.config;
 
+import com.google.gson.*;
+import dev.isxander.yacl3.config.v2.api.ConfigClassHandler;
+import dev.isxander.yacl3.config.v2.api.SerialEntry;
+import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder;
 import me.imbanana.projectilecamera.ModCameraController;
+import me.imbanana.projectilecamera.ProjectileCameraMod;
+import me.imbanana.projectilecamera.config.controllers.EntityTypeController;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ModConfig {
-    public static final List<EntityType<?>> DEFAULT_TRACKABLE = new ArrayList<>(){{
+    public static ConfigClassHandler<ModConfig> HANDLER = ConfigClassHandler.createBuilder(ModConfig.class)
+            .id(ProjectileCameraMod.idOf("config"))
+            .serializer(config -> GsonConfigSerializerBuilder.create(config)
+                    .setPath(ProjectileCameraMod.getConfigDir().resolve("projectile_camera.json5"))
+                    .appendGsonBuilder(gsonBuilder -> gsonBuilder
+                            .setPrettyPrinting()
+                            .registerTypeHierarchyAdapter(EntityType.class, new EntityTypeAdapter())
+                    )
+                    .setJson5(true)
+                    .build()
+            )
+            .build();
+
+    @SerialEntry
+    private boolean enabled = true;
+
+    @SerialEntry
+    private List<EntityType<?>> trackableEntities = new ArrayList<>(){{
         add(EntityType.SNOWBALL);
         add(EntityType.EGG);
         add(EntityType.ENDER_PEARL);
@@ -16,28 +41,30 @@ public class ModConfig {
         add(EntityType.TRIDENT);
     }};
 
-    private List<EntityType<?>> trackableEntities;
-    private boolean shouldStopWhenMoved;
-    private boolean shouldStopWhenKeypress;
-    private float rotationSmoothStiffness;
-    private float rotationSmoothDamping;
-    private float movementSmoothStiffness;
-    private float movementSmoothDamping;
+    @SerialEntry
+    private boolean shouldStopWhenMoved = true;
 
-    public ModConfig(List<EntityType<?>> trackableEntities,
-                     boolean shouldStopWhenMoved,
-                     boolean shouldStopWhenKeypress,
-                     float rotationSmoothStiffness,
-                     float rotationSmoothDamping,
-                     float movementSmoothStiffness,
-                     float movementSmoothDamping) {
-        this.trackableEntities = trackableEntities;
-        this.shouldStopWhenMoved = shouldStopWhenMoved;
-        this.shouldStopWhenKeypress = shouldStopWhenKeypress;
-        this.rotationSmoothStiffness = rotationSmoothStiffness;
-        this.rotationSmoothDamping = rotationSmoothDamping;
-        this.movementSmoothStiffness = movementSmoothStiffness;
-        this.movementSmoothDamping = movementSmoothDamping;
+    @SerialEntry
+    private boolean shouldStopWhenKeypress = true;
+
+    @SerialEntry
+    private float rotationSmoothStiffness = 0.1f;
+
+    @SerialEntry
+    private float rotationSmoothDamping = 0.5f;
+
+    @SerialEntry
+    private float movementSmoothStiffness = 0.1f;
+
+    @SerialEntry
+    private float movementSmoothDamping = 0.5f;
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public List<EntityType<?>> getTrackableEntities() {
@@ -98,5 +125,17 @@ public class ModConfig {
     public void setMovementSmoothDamping(float movementSmoothDamping) {
         this.movementSmoothDamping = movementSmoothDamping;
         ModCameraController.updateCameraSmoothing(this);
+    }
+
+    public static class EntityTypeAdapter implements JsonSerializer<EntityType<?>>, JsonDeserializer<EntityType<?>> {
+        @Override
+        public EntityType<?> deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+            return EntityTypeController.getEntityTypeFromName(jsonElement.getAsString(), EntityType.SNOWBALL);
+        }
+
+        @Override
+        public JsonElement serialize(EntityType<?> entityType, Type type, JsonSerializationContext jsonSerializationContext) {
+            return new JsonPrimitive(BuiltInRegistries.ENTITY_TYPE.getKey(entityType).toString());
+        }
     }
 }

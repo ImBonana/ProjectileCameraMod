@@ -102,6 +102,12 @@ subprojects {
             if (loader == "fabric") {
                 dependencies {
                     required.project "fabric-api"
+                    required.project "yacl"
+                    optional.project "modmenu"
+                }
+            } else if (loader == "neoforge") {
+                dependencies {
+                    required.project "yacl"
                 }
             }
         }

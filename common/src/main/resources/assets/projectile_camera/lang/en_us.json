@@ -1,5 +1,12 @@
 {
+    "key.projectile_camera.toggle": "Toggle Projectile Camera",
+
+    "msg.projectile_camera.toggle_on": "Projectile Camera Is Now On",
+    "msg.projectile_camera.toggle_off": "Projectile Camera Is Now Off",
+
     "config.projectile_camera.title": "Projectile Camera",
+    "config.projectile_camera.enable": "Enable",
+    "config.projectile_camera.enable.desc": "Enable mod?",
     "config.projectile_camera.stop_on_move": "Stop On Movement",
     "config.projectile_camera.stop_on_move.desc": "Should the player exit the projectile camera when moved?",
     "config.projectile_camera.stop_on_key": "Stop On Keypress",

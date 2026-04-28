@@ -6,7 +6,7 @@ license = "MIT"
 [[mods]]
 modId = "${mod_id}"
 version = "${version}"
-displayName = "ProjetileCamera"
+displayName = "Projetile Camera"
 authors = "ImBanana"
 description = '''
 Add camera to projectiles
