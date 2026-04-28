@@ -1,6 +1,0 @@
-/tick freeze
-/summon minecraft:arrow
-/tick sprint 1
-/time set noon
-/time set day
-/time set noon
