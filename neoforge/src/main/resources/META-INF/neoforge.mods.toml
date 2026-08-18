@@ -11,7 +11,7 @@ authors = "ImBanana"
 description = '''
 Add camera to projectiles
 '''
-logoFile = "assets/${mod_id}/icon.png"
+iconFile = "assets/${mod_id}/icon.png"
 modUrl = "https://modrinth.com/project/${modrinth_id}"
 
 [[dependencies.${mod_id}]]

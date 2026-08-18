@@ -27,15 +27,15 @@ public class ModCameraController {
 
         this.anchorPos = this.client.player.position();
         this.trackedProjectile = projectile;
-        this.hideGuiState = this.client.options.hideGui;
+        this.hideGuiState = this.client.gui.hud.isHidden();
 
-        this.client.options.hideGui = true;
+        this.setHudHideState(true);
         this.client.setCameraEntity(projectile);
     }
 
     public void stopTracking() {
         this.trackedProjectile = null;
-        this.client.options.hideGui = this.hideGuiState;
+        this.setHudHideState(this.hideGuiState);
         this.client.setCameraEntity(this.client.player);
     }
 
@@ -98,5 +98,11 @@ public class ModCameraController {
         ROTATION_SMOOTH.setDamping(config.getRotationSmoothDamping());
         MOVEMENT_SMOOTH.setStiffness(config.getMovementSmoothStiffness());
         MOVEMENT_SMOOTH.setDamping(config.getMovementSmoothDamping());
+    }
+
+    private void setHudHideState(boolean value) {
+        if (this.client.gui.hud.isHidden() != value) {
+            this.client.gui.hud.toggle();
+        }
     }
 }

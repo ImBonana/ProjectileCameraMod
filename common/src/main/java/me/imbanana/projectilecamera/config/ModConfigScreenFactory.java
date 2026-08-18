@@ -8,6 +8,7 @@ import me.imbanana.projectilecamera.config.controllers.EntityTypeControllerBuild
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 
 public class ModConfigScreenFactory {
 
@@ -41,7 +42,7 @@ public class ModConfigScreenFactory {
                                     .name(createText("tracked_projectiles"))
                                     .description(OptionDescription.of(createText("tracked_projectiles.desc")))
                                     .binding(defaults.getTrackableEntities(), config::getTrackableEntities, config::setTrackableEntities)
-                                    .initial(EntityType.SNOWBALL)
+                                    .initial(EntityTypes.SNOWBALL)
                                     .controller(EntityTypeControllerBuilder::create)
                                     .build()
                             )

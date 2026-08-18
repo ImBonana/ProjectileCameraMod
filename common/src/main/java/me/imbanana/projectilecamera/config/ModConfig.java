@@ -9,6 +9,7 @@ import me.imbanana.projectilecamera.ProjectileCameraMod;
 import me.imbanana.projectilecamera.config.controllers.EntityTypeController;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -33,12 +34,12 @@ public class ModConfig {
 
     @SerialEntry
     private List<EntityType<?>> trackableEntities = new ArrayList<>(){{
-        add(EntityType.SNOWBALL);
-        add(EntityType.EGG);
-        add(EntityType.ENDER_PEARL);
-        add(EntityType.SPECTRAL_ARROW);
-        add(EntityType.ARROW);
-        add(EntityType.TRIDENT);
+        add(EntityTypes.SNOWBALL);
+        add(EntityTypes.EGG);
+        add(EntityTypes.ENDER_PEARL);
+        add(EntityTypes.SPECTRAL_ARROW);
+        add(EntityTypes.ARROW);
+        add(EntityTypes.TRIDENT);
     }};
 
     @SerialEntry
@@ -130,7 +131,7 @@ public class ModConfig {
     public static class EntityTypeAdapter implements JsonSerializer<EntityType<?>>, JsonDeserializer<EntityType<?>> {
         @Override
         public EntityType<?> deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-            return EntityTypeController.getEntityTypeFromName(jsonElement.getAsString(), EntityType.SNOWBALL);
+            return EntityTypeController.getEntityTypeFromName(jsonElement.getAsString(), EntityTypes.SNOWBALL);
         }
 
         @Override
