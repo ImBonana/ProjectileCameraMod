@@ -19,7 +19,7 @@ public abstract class EntityRendererMixin<T extends Entity, S extends EntityRend
             at = @At("HEAD"),
             cancellable = true
     )
-    private void hideTrackedProjectile(T entity, Frustum culler, double camX, double camY, double camZ, CallbackInfoReturnable<Boolean> cir) {
+    private void hideTrackedProjectile(T entity, Frustum culler, double camX, double camY, double camZ, float partialTicks, CallbackInfoReturnable<Boolean> cir) {
         if (!(entity instanceof Projectile projectile)) return;
         if (!ProjectileCameraMod.getCameraController().isTrackingProjectile(projectile)) return;
 

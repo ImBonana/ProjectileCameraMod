@@ -1,6 +1,5 @@
 package me.imbanana.projectilecamera.neoforge;
 
-import dev.isxander.yacl3.api.YetAnotherConfigLib;
 import me.imbanana.projectilecamera.ProjectileCameraMod;
 import me.imbanana.projectilecamera.config.ModConfigScreenFactory;
 import me.imbanana.projectilecamera.keymapping.ModKeyMapping;

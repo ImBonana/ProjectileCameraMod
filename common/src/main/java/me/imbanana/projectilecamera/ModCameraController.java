@@ -6,7 +6,6 @@ import me.imbanana.projectilecamera.util.CameraSmoothing;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.Vec3;
-import org.lwjgl.glfw.GLFW;
 
 public class ModCameraController {
     private Minecraft client;
@@ -67,7 +66,7 @@ public class ModCameraController {
             return;
         }
 
-        if (InputConstants.isKeyDown(this.client.getWindow(), GLFW.GLFW_KEY_ESCAPE)) {
+        if (InputConstants.isKeyDown(InputConstants.KEY_ESCAPE)) {
             stopTracking();
             return;
         }
