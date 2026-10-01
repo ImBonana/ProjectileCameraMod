@@ -3,9 +3,15 @@ package me.imbanana.projectilecamera;
 import me.imbanana.projectilecamera.config.ModConfig;
 import me.imbanana.projectilecamera.keymapping.ModKeyMapping;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,14 +24,17 @@ public final class ProjectileCameraMod {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     private static ModCameraController modCameraController;
+    private static ModProjectileManager modProjectileManager;
 
     public static void init() {
         modCameraController = new ModCameraController();
+        modProjectileManager = new ModProjectileManager();
         ModConfig.HANDLER.load();
     }
 
     public static void tickEvent() {
         modCameraController.tick();
+        modProjectileManager.tick();
 
         if (ModKeyMapping.toggleMod.consumeClick()) {
             ModConfig config = ModConfig.HANDLER.instance();
@@ -37,6 +46,14 @@ public final class ProjectileCameraMod {
                 player.sendOverlayMessage(Component.translatable("msg." + MOD_ID + ".toggle_" + (config.isEnabled() ? "on" : "off")));
             }
         }
+    }
+
+    public static InteractionResult playerItemUseEvent(Player player, Level level, InteractionHand interactionHand) {
+        return modProjectileManager.onItemUse(player, level, interactionHand);
+    }
+
+    public static void entityLoadEvent(Entity entity, ClientLevel clientLevel) {
+        modProjectileManager.onEntityLoad(entity, clientLevel);
     }
 
     public static ModCameraController getCameraController() {

@@ -1,12 +1,10 @@
 package me.imbanana.projectilecamera.mixin;
 
 import me.imbanana.projectilecamera.ProjectileCameraMod;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.TraceableEntity;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -37,17 +35,5 @@ public abstract class ProjectileMixin extends Entity implements TraceableEntity 
     private void injectOnHitBlock(BlockHitResult hitResult, CallbackInfo ci) {
         if (!ProjectileCameraMod.getCameraController().isTrackingProjectile((Projectile) (Object) this)) return;
         ProjectileCameraMod.getCameraController().stopTracking();
-    }
-
-    @Inject(
-            method = "applyOnProjectileSpawned",
-            at = @At("TAIL")
-    )
-    private void applyOnProjectileSpawned(ServerLevel level, ItemStack spawnedFrom, CallbackInfo ci) {
-        Projectile thiz = (Projectile) (Object) this;
-
-        if (!ProjectileCameraMod.getCameraController().canTrack(thiz)) return;
-
-        ProjectileCameraMod.getCameraController().startTracking(thiz);
     }
 }
